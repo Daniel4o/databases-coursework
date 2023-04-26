@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <title>Workout Note Directory</title>
+</head>
+
+<body>
+    <div class="container">
+        <h3>Workout Note Directory</h3>
+        <hr>
+        <p class="h4 mb-4">Save Workout Note</p>
+
+        <form action="#" th:action="@{/workout-notes/save}" th:object="${workoutNote}" method="POST">
+            <input type="hidden" th:field="*{id}">
+
+            <input type="number" th:field="*{objectId}" class="form-control mb-4 w-25" placeholder="Object ID">
+
+            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" style="color:red" />
+            <input min="2" required type="text" th:field="*{description}" class="form-control mb-4 w-25" placeholder="Description">
+          
+            <span th:if="${#fields.hasErrors('deactive')}" th:errors="*{deactive}" style="color:red" />
+            <input min="2" required type="date" th:field="*{deactive}" class="form-control mb-4 w-25" placeholder="Deactive">
+            
+           
+            <button type="submit" class="btn btn-info col-2">Save</button>
+        
+        </form>
+        <hr>
+        <a th:href="@{/workout-notes/list}" class="btn btn-secondary">Back to Workout Notes List</a>
+    </div>
+</body>
+
+</html>
