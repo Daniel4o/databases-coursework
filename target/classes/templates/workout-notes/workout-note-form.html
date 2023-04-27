@@ -25,14 +25,15 @@
             <input type="number" th:field="*{objectId}" class="form-control mb-4 w-25" placeholder="Object ID">
 
             <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" style="color:red" />
-            <input min="2" required type="text" th:field="*{description}" class="form-control mb-4 w-25" placeholder="Description">
-          
+            <input min="2" required type="text" th:field="*{description}" class="form-control mb-4 w-25"
+                placeholder="Description">
             <span th:if="${#fields.hasErrors('deactive')}" th:errors="*{deactive}" style="color:red" />
-            <input min="2" required type="date" th:field="*{deactive}" class="form-control mb-4 w-25" placeholder="Deactive">
-            
-           
+            <input th:if="*{objectId} != null" type="date" th:field="*{deactive}" class="form-control mb-4 w-25"
+                placeholder="Deactive">
+
+
             <button type="submit" class="btn btn-info col-2">Save</button>
-        
+
         </form>
         <hr>
         <a th:href="@{/workout-notes/list}" class="btn btn-secondary">Back to Workout Notes List</a>

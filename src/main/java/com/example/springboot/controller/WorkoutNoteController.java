@@ -28,8 +28,9 @@ public class WorkoutNoteController {
 	private WorkoutNoteService workoutNoteService;
 	private WorkoutNoteOldService  workoutNoteOldService;
 
-	public WorkoutNoteController(WorkoutNoteService workoutNoteService) {
+	public WorkoutNoteController(WorkoutNoteService workoutNoteService, WorkoutNoteOldService workoutNoteOldService) {
 		this.workoutNoteService = workoutNoteService;
+		this.workoutNoteOldService = workoutNoteOldService;
 	}
 
 	@InitBinder
@@ -53,6 +54,7 @@ public class WorkoutNoteController {
 	@GetMapping("/add")
 	public String addWorkoutNote(Model model) {
 		WorkoutNote workoutNote = new WorkoutNote();
+		System.out.println("ObjectId is: " + workoutNote.getObjectId());
 
 		model.addAttribute("workoutNote", workoutNote);
 
@@ -84,6 +86,7 @@ public class WorkoutNoteController {
 	public String delete(@RequestParam("id") int id) {
 
 		workoutNoteService.deleteById(id);
+		workoutNoteOldService.deleteById(id);
 
 		return "redirect:/workout-notes/list";
 	}

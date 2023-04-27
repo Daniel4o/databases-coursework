@@ -35,12 +35,18 @@ public class WorkoutNote {
 	@Column(name = "description")
 	private String description;
     
-    @NotNull(message = "The field is required!")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name="deactive")
     private Date deactive;
 
     public WorkoutNote() {}
+
+    public WorkoutNote(int id, int objectId, String description, Date deactive) {
+        this.id = id;
+        this.objectId = objectId;
+        this.description = description;
+        this.deactive = deactive;
+    }
 
     public WorkoutNote(int objectId, String description, Date deactive) {
         this.objectId = objectId;

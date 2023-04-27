@@ -10,7 +10,7 @@ public interface WorkoutNoteService {
 	
 	WorkoutNote findById(int id);
 	
-	void save(WorkoutNote workoutNotes);
+	void save(WorkoutNote workoutNote);
 	
 	void deleteById(int id);
 	
