@@ -73,7 +73,6 @@ public class WorkoutNoteServiceImpl implements WorkoutNoteService {
 				WorkoutNote oldestNote = filteredSortedNotes.get(0);
 
 				// If Updated record is Later THAN the most earlier record
-				//
 				if (workoutNote.getDeactive().compareTo(oldestNote.getDeactive()) >= 0) {
 					workoutNoteRepository.save(workoutNote);
 					WorkoutNoteOld saveOldestNote = new WorkoutNoteOld(oldestNote.getId(), oldestNote.getObjectId(),
